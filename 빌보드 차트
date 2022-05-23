@@ -1,0 +1,7 @@
+from urllib.request import urlopen
+url = 'https://www.billboard.com/charts/hot-100/'
+htmlData = urlopen(url).read()
+
+tr = html.select('#content > div.track_section > div:nth-child(2) > div > table > tbody > tr')
+
+for item in tr:
