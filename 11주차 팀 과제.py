@@ -67,3 +67,16 @@ elif n>1:
     if ben !='무료배송':
       order = order + 2500
   print(f'배송료를 포함한 총 금액은 {n*totalprice + order}원 입니다.\n이용해주셔서 감사합니다.')
+
+  #베스트 아이템 순위 비교 시스템
+n=list(map(int, input('몇 번째 순위의 베스트 아이템을 비교할까요?(입력 예시:1 2 3):').split()))
+
+for i in n:
+  price = num[i-1].text.replace(',','')
+  ben = benefit[i-1].text.replace('\n','')
+  ran = rank[i-1].text
+  if ben == '':
+    line = f'{ran}, {name[i-1].text}, {int(price)}원, 유료배송'
+  else:
+    line = f'{ran}, {name[i-1].text}, {int(price)}원, {str(ben)}'
+  print(line)
