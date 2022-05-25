@@ -39,3 +39,31 @@ with open('interpark.csv', 'w') as fp:
     else:
       line = f'{ran}, {name[i].text}, {int(price)}원, {str(ben)}\n'
     fp.write(line)
+
+#베스트 아이템을 모두 구입하면 얼마를 지불해야 할까요?
+#유료배송의 경우 배송비는 2500원입니다.
+#단, 유료배송 제품의 경우 처음 한 번만 배송비를 지불합니다.
+
+n=int(input('인터파크 베스트 아이템을 몇개씩 주문할까요?:'))
+totalprice = 0
+
+if n == 0:
+  print('배송료를 포함한 총 금액은 0원입니다.\n이용해주셔서 감사합니다.')
+elif n==1:
+  order=0
+  for i in range(len(name)):
+    price = int(num[i].text.replace(',',''))
+    totalprice = totalprice+price
+    ben = benefit[i].text.replace('\n','')
+    if ben!='무료배송':
+      order = order + 2500
+  print(f'배송료를 포함한 총 금액은 {totalprice+order}원 입니다.\n이용해주셔서 감사합니다.')
+elif n>1:
+  order=0
+  for i in range(len(name)):
+    price = int(num[i].text.replace(',',''))
+    totalprice = totalprice+price
+    ben = benefit[i].text.replace('\n','')
+    if ben !='무료배송':
+      order = order + 2500
+  print(f'배송료를 포함한 총 금액은 {n*totalprice + order}원 입니다.\n이용해주셔서 감사합니다.')
