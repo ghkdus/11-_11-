@@ -9,3 +9,9 @@ htmlData=htmlData.decode('utf8')
 
 from bs4 import BeautifulSoup as bs
 
+html = bs(htmlData, 'html.parser')
+
+name = html.select('.name')
+num = html.select('.number')
+benefit = html.select('.benefit')
+rank = html.select('h3')
